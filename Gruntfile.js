@@ -18,10 +18,33 @@ module.exports = function(grunt) {
                 eslintrc: './.eslintrc.json'
             },
             target: ['*.js']
+        },
+        uglify: {
+            release:{
+              files: {
+                'rectangle.min.js': 'rectangle.js'
+              }
+            }       
+        },
+        cssmin: {  
+            'rectangle.min.css': 'rectangle.css'
+        },
+        htmlmin: {
+            options: {
+              collapseWhitespace: true,
+              preserveLineBreaks: false
+            },
+            files: {
+              src: './indexmax.html',
+              dest: 'index.html'
+            }
         }
     });
     grunt.loadNpmTasks('grunt-htmlhint');
     grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-eslint');
-    grunt.registerTask('default',['htmlhint','csslint','eslint']);
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.registerTask('default',['htmlhint','csslint','eslint','uglify:release','cssmin','htmlmin']);
 };
