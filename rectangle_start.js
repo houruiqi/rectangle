@@ -1,6 +1,7 @@
-// function roundFractional(x, n) {
-//     return Math.round(x * Math.pow(10, n)) / Math.pow(10, n);
-// }
+/*global $:true*/
+function roundFractional(x, n) {
+    return Math.round(x * Math.pow(10, n)) / Math.pow(10, n);
+}
 $(function(){
     //get dom elem
     var $width = $('#width'),
@@ -15,16 +16,11 @@ $(function(){
         var w = Number($width.val()),
             h = Number($height.val());
         //calculate
-        // var p = roundFractional(2 * (w + h),2),
-        //     a = roundFractional(w * h,2);
-
-        var rect = rectangle();
-        
+        var p = roundFractional(2 * (w + h),2),
+            a = roundFractional(w * h,2);
         //output
-        // $perimeter.val(p);
-        // $area.val(a);
-        $perimeter.val(rect.perimeter(w,h));
-        $area.val(rect.area(w,h))
+        $perimeter.val(p);
+        $area.val(a);
     });
 
 });
